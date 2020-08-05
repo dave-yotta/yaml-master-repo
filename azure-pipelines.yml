@@ -5,7 +5,7 @@
 
 resources:
   repositories:
-  - repository: GitHubRepoA # The name used to reference this repository in the checkout step
+  - repository: slave
     type: github
     endpoint: dave-yotta
     name: dave-yotta/yaml-slave-repo
