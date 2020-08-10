@@ -9,9 +9,18 @@ resources:
     type: github
     endpoint: dave-yotta
     name: dave-yotta/yaml-slave-repo
-
-trigger:
-- master
+  - repository: master
+    type: github
+    endpoint: dave-yotta
+    name: dave-yotta/yaml-master-repo
+    trigger:
+      branches:
+        include:
+        - master
+    pr:
+      branch:
+        include:
+        - master
 
 pool:
   vmImage: 'ubuntu-latest'
