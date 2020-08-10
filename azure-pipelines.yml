@@ -18,7 +18,7 @@ resources:
         include:
         - master
     pr:
-      branch:
+      branches:
         include:
         - master
 
