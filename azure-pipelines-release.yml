@@ -1,17 +1,39 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- template: hello-args.yaml
-  parameters:
-    name: relesae-san
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+- stage: labs
+  jobs:
+  - deployment: DeployWeb
+    displayName: deploy file!
+    pool:
+      vmImage: 'Ubuntu-latest'
+    environment: labs
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo Hello world
+- stage: staging
+  dependsOn: labs
+  jobs:
+  - deployment: DeployWeb
+    displayName: deploy file!
+    pool:
+      vmImage: 'Ubuntu-latest'
+    environment: staging
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo Hello world
+- stage: prod
+  dependsOn: staging
+  jobs:
+  - deployment: DeployWeb
+    displayName: deploy file!
+    pool:
+      vmImage: 'Ubuntu-latest'
+    environment: prod
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo Hello world
