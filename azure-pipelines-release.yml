@@ -2,6 +2,7 @@ trigger: none
 
 stages:
 - stage: labs
+  condition: eq(2,1)
   jobs:
   - deployment: DeployWeb
     displayName: deploy file!
