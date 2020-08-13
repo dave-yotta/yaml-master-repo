@@ -5,6 +5,7 @@
 
 resources:
   repositories:
+  # a build repository (we can have many)
   - repository: slave
     type: github
     endpoint: dave-yotta
@@ -17,6 +18,7 @@ resources:
       branches:
         include:
         - master
+  # our infrastructure repository
   - repository: master
     type: github
     endpoint: dave-yotta
