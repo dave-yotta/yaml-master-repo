@@ -5,7 +5,7 @@ stages:
     displayName: deploy file!
     pool:
       vmImage: 'Ubuntu-latest'
-    environment: labs
+    environment: yaml-test-labs
     strategy:
       runOnce:
         deploy:
@@ -18,7 +18,7 @@ stages:
     displayName: deploy file!
     pool:
       vmImage: 'Ubuntu-latest'
-    environment: staging
+    environment: yaml-test-staging
     strategy:
       runOnce:
         deploy:
@@ -31,7 +31,7 @@ stages:
     displayName: deploy file!
     pool:
       vmImage: 'Ubuntu-latest'
-    environment: prod
+    environment: yaml-test-prod
     strategy:
       runOnce:
         deploy:
