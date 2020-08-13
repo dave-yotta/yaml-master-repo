@@ -36,8 +36,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- template: hello-args.yaml
+  parameters:
+    name: integrate-san
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
