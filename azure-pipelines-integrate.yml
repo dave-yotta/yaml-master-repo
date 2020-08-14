@@ -32,7 +32,6 @@ pool:
 
 steps:
 - download: build
-  target: .
 
 - template: hello-args.yaml
   parameters:
@@ -40,7 +39,7 @@ steps:
 
 - script: |
     echo i shall be deployed! > deployment-file
-    cat build/build-file >> deployment-file
+    cat $(Pipeline.Workspace)/build/build-file >> deployment-file
     echo "1.0.0" >> deployment-file
   displayName: 'make a deployable file lol'
   failOnStderr: true
