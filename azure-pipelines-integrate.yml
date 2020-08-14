@@ -56,13 +56,13 @@ steps:
   displayName: 'make a deployable file lol'
   failOnStderr: true
 
-- script: |
-    curl $(api.headers) -X PUT $(api.uri)/build/builds/$(Resources.Pipeline.Build.RunId)/tags/Nightly
-    curl $(api.headers) -X PUT $(api.build.uri)/tags/Nightly
-  displayName: tag builds with Nightly
-
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: deployment-file
     artifact: deploy
     publishLocation: pipeline
+
+- script: |
+    curl $(api.headers) -X PUT $(api.uri)/build/builds/$(Resources.Pipeline.Build.RunId)/tags/Nightly
+    curl $(api.headers) -X PUT $(api.build.uri)/tags/Nightly
+  displayName: tag builds with Nightly
