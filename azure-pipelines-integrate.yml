@@ -32,6 +32,7 @@ pool:
 
 steps:
 - download: build
+  target: .
 
 - template: hello-args.yaml
   parameters:
@@ -42,6 +43,7 @@ steps:
     cat build/build-file >> deployment-file
     echo "1.0.0" >> deployment-file
   displayName: 'make a deployable file lol'
+  failOnStderr: true
 
 - task: PublishPipelineArtifact@1
   inputs:
