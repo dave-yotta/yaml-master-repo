@@ -36,13 +36,12 @@ pool:
 steps:
 - task: DownloadPipelineArtifact@2
   inputs:
-    buildType: 'specific'
-    project: '$(System.TeamProjectId)'
-    definition: '102'
+    buildType: specific
+    project: $(System.TeamProjectId)
+    definition: $(Resources.Pipeline.Build.PipelineId)
     specificBuildWithTriggering: true
-    buildVersionToDownload: 'latestFromBranch'
-    branchName: 'refs/heads/master'
-    targetPath: '$(Pipeline.Workspace)'
+    buildVersionToDownload: latestFromBranch
+    branchName: refs/heads/master
 
 - template: hello-args.yaml
   parameters:
@@ -51,7 +50,7 @@ steps:
 - script: |
     env
     echo i shall be deployed! > deployment-file
-    cat $(Pipeline.Workspace)/build/build-file >> deployment-file
+    cat build/build-file >> deployment-file
     echo "1.0.0" >> deployment-file
   displayName: 'make a deployable file lol'
   failOnStderr: true
