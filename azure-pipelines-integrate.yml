@@ -2,8 +2,15 @@ schedules:
   - cron: 0 4 * * *
     displayName: Nightly
     always: true
+    branches:
+      include:
+        - master
 
 resources:
+  pipelines:
+  - pipeline: build
+    source: YAML Pipelines Testing - Build
+    trigger: none
   repositories:
   # a build repository (we can have many)
   - repository: slave
