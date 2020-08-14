@@ -56,7 +56,10 @@ steps:
   displayName: 'make a deployable file lol'
   failOnStderr: true
 
-- script: curl $(api.headers) -X PUT $(api.uri)/builds/build/$(Resources.Pipeline.Build.RunId)/tags/Integrate
+- script: |
+    curl $(api.headers) -X PUT $(api.uri)/builds/build/$(Resources.Pipeline.Build.RunId)/tags/Integrate
+    curl $(api.headers) -X PUT $(api.build.uri)/tags/Integrate
+  displayName: tag builds with Nightly
 
 - task: PublishPipelineArtifact@1
   inputs:
