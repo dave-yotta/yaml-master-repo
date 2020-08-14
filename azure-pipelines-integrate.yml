@@ -10,22 +10,10 @@ resources:
   pipelines:
   - pipeline: build
     source: YAML Pipelines Testing - Build
-    trigger: none
-  repositories:
-  # a build repository (we can have many)
-  - repository: slave
-    type: github
-    endpoint: dave-yotta
-    name: dave-yotta/yaml-slave-repo
     trigger:
-      branches:
-        include:
-        - master
-    pr:
-      branches:
-        include:
-        - master
-  # our infrastructure repository
+      tags:
+        - Integrate
+  repositories:
   - repository: master
     type: github
     endpoint: dave-yotta
@@ -43,12 +31,15 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- download: build
+
 - template: hello-args.yaml
   parameters:
     name: integrate-san
 
 - script: |
     echo i shall be deployed! > deployment-file
+    cat build/build-file >> deployment-file
     echo "1.0.0" >> deployment-file
   displayName: 'make a deployable file lol'
 
