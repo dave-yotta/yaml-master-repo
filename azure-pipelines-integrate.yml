@@ -6,6 +6,9 @@ schedules:
       include:
         - master
 
+variables:
+- template: api-vars.yaml
+
 resources:
   pipelines:
   - pipeline: build
@@ -31,18 +34,29 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- download: build
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'specific'
+    project: '$(System.TeamProjectId)'
+    definition: '102'
+    specificBuildWithTriggering: true
+    buildVersionToDownload: 'latestFromBranch'
+    branchName: 'refs/heads/master'
+    targetPath: '$(Pipeline.Workspace)'
 
 - template: hello-args.yaml
   parameters:
     name: integrate-san
 
 - script: |
+    env
     echo i shall be deployed! > deployment-file
     cat $(Pipeline.Workspace)/build/build-file >> deployment-file
     echo "1.0.0" >> deployment-file
   displayName: 'make a deployable file lol'
   failOnStderr: true
+
+#- script: curl $(api.headers) -X PUT $(api.uri)/tags/Integrate
 
 - task: PublishPipelineArtifact@1
   inputs:
