@@ -57,8 +57,8 @@ steps:
   failOnStderr: true
 
 - script: |
-    curl $(api.headers) -X PUT $(api.uri)/build/builds/$(Resources.Pipeline.Build.RunId)/tags/Integrate
-    curl $(api.headers) -X PUT $(api.build.uri)/tags/Integrate
+    curl $(api.headers) -X PUT $(api.uri)/build/builds/$(Resources.Pipeline.Build.RunId)/tags/Nightly
+    curl $(api.headers) -X PUT $(api.build.uri)/tags/Nightly
   displayName: tag builds with Nightly
 
 - task: PublishPipelineArtifact@1
