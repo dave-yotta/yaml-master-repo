@@ -1,8 +1,18 @@
 trigger: none
-schedules:
-  - cron: 0 4 * * *
-    displayName: Nightly
-    always: true
+
+resources:
+  pipelines:
+  - pipeline: build
+    source: YAML Pipelines Testing - Build
+    trigger: none
+    tags:
+      - Nightly
+  - pipeline: integrate
+    source: YAML Pipelines Testing - Integrate
+    trigger:
+      enabled: true
+      tags:
+        - Nightly
 
 stages:
 - stage: labs
