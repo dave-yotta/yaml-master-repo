@@ -17,7 +17,7 @@ resources:
 stages:
 - stage: labs
   jobs:
-  - deployment: DeployWeb
+  - deployment: deploy-stuff
     displayName: deploy file!
     pool:
       vmImage: 'Ubuntu-latest'
@@ -30,7 +30,7 @@ stages:
 - stage: staging
   dependsOn: labs
   jobs:
-  - deployment: DeployWeb
+  - deployment: deploy-stuff
     displayName: deploy file!
     pool:
       vmImage: 'Ubuntu-latest'
@@ -43,7 +43,7 @@ stages:
 - stage: prod
   dependsOn: staging
   jobs:
-  - deployment: DeployWeb
+  - deployment: deploy-stuff
     displayName: deploy file!
     pool:
       vmImage: 'Ubuntu-latest'
