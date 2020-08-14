@@ -42,6 +42,7 @@ steps:
     specificBuildWithTriggering: true
     buildVersionToDownload: latestFromBranch
     branchName: refs/heads/master
+    targetPath: .
 
 - template: hello-args.yaml
   parameters:
