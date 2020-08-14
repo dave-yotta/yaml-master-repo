@@ -1,4 +1,8 @@
 trigger: none
+schedules:
+  - cron: 0 4 * * *
+    displayName: Nightly
+    always: true
 
 stages:
 - stage: labs
