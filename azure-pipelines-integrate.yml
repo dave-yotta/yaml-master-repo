@@ -56,7 +56,7 @@ steps:
   displayName: 'make a deployable file lol'
   failOnStderr: true
 
-#- script: curl $(api.headers) -X PUT $(api.uri)/tags/Integrate
+- script: curl $(api.headers) -X PUT $(api.uri)/builds/build/$(Resources.Pipeline.Build.RunId)/tags/Integrate
 
 - task: PublishPipelineArtifact@1
   inputs:
