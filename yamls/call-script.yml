@@ -1,2 +1,2 @@
 steps:
-- script: ../script/call.sh
+- script: ../scripts/call.sh
