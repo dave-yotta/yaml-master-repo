@@ -1,2 +1,2 @@
 steps:
-- script: ../scripts/call.sh
+- script: yaml-master-repo/scripts/call.sh
