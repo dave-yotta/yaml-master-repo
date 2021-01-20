@@ -1,2 +1,3 @@
 steps:
-- script: $(build.sourcesdirectory)/yaml-master-repo/scripts/call.sh
+- script: scripts/call.sh
+  workingDirectory: $(build.sourcesdirectory)/yaml-master-repo
