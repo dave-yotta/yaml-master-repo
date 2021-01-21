@@ -16,6 +16,8 @@ resources:
 
 stages:
 - stage: labs
+  variables:
+    - name: dave
   jobs:
   - deployment: deploy_stuff
     displayName: deploy file!
